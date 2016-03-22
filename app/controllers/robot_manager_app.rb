@@ -22,22 +22,22 @@ class RobotManagerApp < Sinatra::Base
     redirect '/robots'
   end
 
-  get '/robots/:name' do |name|
-    @robots = robot_manager.find(name)
+  get '/robots/:name' do |id|
+    @robots = robot_manager.find(id)
     erb :show
   end
 
-  get '/robots/:name/edit' do |name|
-    @robots = robot_manager.find(name)
+  get '/robots/:id/edit' do |id|
+    @robots = robot_manager.find(id)
     erb :edit
   end
 
-  put '/robots/:name' do |name|
-    robot_manager.update(name, params[:robot])
-    redirect "/robots/#{name}"
+  put '/robots/:id' do |id|
+    robot_manager.update(id, params[:robot])
+    redirect "/robots/#{id}"
   end
 
-  delete '/robots/:name' do |id|
+  delete '/robots/:id' do |id|
     robot_manager.delete(name)
     redirect "/robots"
   end

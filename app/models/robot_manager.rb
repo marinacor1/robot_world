@@ -13,21 +13,26 @@ class RobotManager
       database['robots'] ||= []
       database['total'] ||= 0
       database['total'] += 1
-      database['robots'] << {"name" => database['total'], "title" => robot[:title], "description" => robot[:description]}
+      database['robots'] << {"id" => database['total'], "title" => robot[:title], "description" => robot[:description]}
     end
   end
 
-  def update(name, robot)
+  def update(id, robot)
     database.transaction do
-      target = database['robots'].find { |data| data["name"] == name}
-      target["title"] = robot[:title]
-      target["description"] = robot[:description]
+      target = database['robots'].find { |data| data["id"] == id}
+      target["name"] = robot[:name]
+      target["city"] = robot[:city]
+      target["state"] = robot[:state]
+      target["avatar"] = robot[:avatar]
+      target["birthdate"] = robot[:birtdate]
+      target["date_hired"] = robot[:date_hired]
+      target["department"] = robot[:department]
     end
   end
 
-  def delete(name)
+  def delete(id)
     database.transaction do
-      database['robots'].delete_if { |robot| robot["name"] == name}
+      database['robots'].delete_if { |robot| robot["id"] == id}
     end
   end
 
@@ -43,14 +48,14 @@ class RobotManager
     end
   end
 
-  def raw_robot(name)
+  def raw_robot(id)
     raw_robots.find do |robot|
-      robot["name"] == name
+      robot["id"] == id
     end
   end
 
   def find(id)
-    Robot.new(raw_robot(name))
+    Robot.new(raw_robot(id))
   end
 
 end

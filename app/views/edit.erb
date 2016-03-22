@@ -1,0 +1,10 @@
+<form action="/robots/<%= @robot.id %>" method="post">
+  <p>Editar</p>
+  <input type="hidden" name="_method" value="PUT" /> <
+  <input type='text' name='robot[title]' value="<%= @robot.title %>"/><br/>
+
+  <textarea name='robot[description]'><%= @robot.description %></textarea><br/>
+  <input type='submit'/>  <!-- gives submit button -->
+</form>
+
+<!-- creates form for editing -->
