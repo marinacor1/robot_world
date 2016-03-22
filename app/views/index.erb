@@ -1,0 +1,12 @@
+<h1>Todos los Robots</h1>
+
+<% @robots.each do |robot| %>
+  <i class='glyphicon glyphicon-robot'></i>
+  <h3><%= robot.id %>: <a href="/robots/<%= robot.id %>"><%= robot.title %></a></h3>
+  <a href="/robots/<%= robot.id %>/edit">Editar</a>
+
+  <form action="/robots/<%= robot.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Eliminar">
+  </form>
+<% end %>
