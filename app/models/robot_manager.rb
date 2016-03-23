@@ -13,7 +13,7 @@ class RobotManager
       database['robots'] ||= []
       database['total'] ||= 0
       database['total'] += 1
-      database['robots'] << {"id" => database['total'], "title" => robot[:title], "description" => robot[:description]}
+      database['robots'] << {"id" => database['total'], "name" => robot[:name], "city" => robot[:city], "state" => robot[:state], "avatar" => robot[:avatar], "birthdate" => robot[:birthdate], "date_hired" => robot[:date_hired], "department" => robot[:department]}
     end
   end
 
@@ -51,10 +51,12 @@ class RobotManager
   def raw_robot(id)
     raw_robots.find do |robot|
       robot["id"] == id
+      puts "This is what I get when I do robot within id: #{robot["id"]}"
     end
   end
 
   def find(id)
+    puts "This is the id: #{id}!!!!!!!!!!"
     Robot.new(raw_robot(id))
   end
 

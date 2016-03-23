@@ -1,0 +1,11 @@
+---
+robots:
+- id: 1
+  name: Jojo
+  city: Miami
+  state: Florida
+  avatar: '43'
+  birthdate: 05/06/71
+  date_hired: 01/02/03
+  department: Publicidad
+total: 1
